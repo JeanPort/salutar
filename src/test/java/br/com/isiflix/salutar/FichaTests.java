@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -27,11 +29,23 @@ public class FichaTests {
 
     @Test
     public void shouldDeleteFicha() {
-        assertTrue(service.excluir(1));
+        assertTrue(service.excluir(3));
     }
 
     @Test
     public void shouldNotDeleteFicha(){
         assertFalse(service.excluir(123456));
+    }
+
+    @Test
+    public void shouldSeveralFicha() {
+        List<FichaPaciente> res = service.buscarPorNome("a");
+        assertFalse(res.isEmpty());
+    }
+
+    @Test
+    public void shouldNotFindFicha() {
+        List<FichaPaciente> res = service.buscarPorNome("Adamastor");
+        assertTrue(res.isEmpty());
     }
 }
