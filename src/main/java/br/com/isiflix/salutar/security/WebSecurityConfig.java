@@ -19,6 +19,7 @@ public class WebSecurityConfig {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                 .requestMatchers(HttpMethod.POST, "/usuarios").permitAll()
+                        //.requestMatchers(HttpMethod.GET, "/fichas/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/login").permitAll()
                 .anyRequest().authenticated());
 
