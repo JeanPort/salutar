@@ -10,7 +10,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin(origins = "http://localhost:4200")
 public class MidiaController {
 
 

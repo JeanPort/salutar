@@ -5,6 +5,7 @@ import br.com.isiflix.salutar.security.SalutarToken;
 import br.com.isiflix.salutar.service.auth.IAuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,7 +15,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin(origins = "http://localhost:4200")
 public class AuthController {
 
     @Autowired
