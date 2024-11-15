@@ -20,7 +20,7 @@ public class UploadServiceImpl implements IUploadService{
     public String uploadFile(MultipartFile file) {
 
         try {
-            String pastaDestino = "C:\\Users\\jean\\Desktop\\worckspace\\images";
+            String pastaDestino = "C:\\Users\\jean\\Desktop\\projetos_angular\\salutar-front\\public\\assets\\midia";
             String extencao = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
             String newFileName = UUID.randomUUID().toString() + extencao;
             Path path = Paths.get(pastaDestino + File.separator + newFileName);

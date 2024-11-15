@@ -16,6 +16,7 @@ public class FichaServiceImpl implements IFichaService{
 
     @Override
     public FichaPaciente cadastrar(FichaPaciente nova) {
+        nova.getMidias().forEach(midia -> midia.setFicha(nova));
         nova.setAtivo(1);
         nova.setUuid(UUID.randomUUID().toString());
         return dao.save(nova);
@@ -23,7 +24,15 @@ public class FichaServiceImpl implements IFichaService{
 
     @Override
     public FichaPaciente alterar(FichaPaciente fichaPaciente) {
-        return dao.save(fichaPaciente);
+        FichaPaciente res = dao.findById(fichaPaciente.getIdFicha()).orElse(null);
+        if (res != null) {
+            if (res.getAtivo() != null) {
+                fichaPaciente.setAtivo(res.getAtivo());
+            }
+            fichaPaciente.getMidias().forEach(midia -> midia.setFicha(fichaPaciente));
+            return dao.save(fichaPaciente);
+        }
+        return null;
     }
 
     @Override
